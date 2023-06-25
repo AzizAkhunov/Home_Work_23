@@ -10,27 +10,32 @@ namespace Home_Work_23
     {
         public static void CreateFiles_10()
         {
-            // Yangi fayl ochish va yozish
+            // Yangi fayl ochish
             for (int i = 0; i < 10; i++)
             {
-            string cn = Convert.ToString(i);
-            string path = $@"C:\\Users\\aziza\\source\\repos\\Home_Work_23\\Home_Work_23\\TxtFiles\\txt{cn}.txt";
-            var f1 = new FileInfo(path);
-                using (StreamWriter sw = f1.CreateText())
-                {
-                    sw.WriteLine(i);
-                }
+                string path = $"{Directory.GetCurrentDirectory()}\\Files_Txt\\{i}.txt";
+                var f1 = new FileStream(path,FileMode.Create);
+                f1.Close();
             }
         }
 
+        public static void Writeto10Files()
+        {
+            //filega yozish
+            for (int i = 0; i < 10; i++)
+            {
+                var r = new StreamWriter($"{Directory.GetCurrentDirectory()}\\Files_Txt\\{i}.txt", false, Encoding.UTF8);
+                r.WriteLine(i);
+                r.Close();
+            }
+        }
 
         public static void ReadAllFiles()
         {
-            // fayl ochish va Uqish
+            //  Uqish
             for (int i = 0; i < 10; i++)
             {
-            string cn = Convert.ToString(i);
-            string path = $@"C:\\Users\\aziza\\source\\repos\\Home_Work_23\\Home_Work_23\\TxtFiles\\txt{i}.txt";
+            string path = $"{Directory.GetCurrentDirectory()}\\Files_Txt\\{i}.txt";
             var f1 = new FileInfo(path);
             
                 using (StreamReader sr = f1.OpenText())
